@@ -16,6 +16,10 @@ public extension PanModalPresentable where Self: UIViewController {
         return topLayoutOffset + 21.0
     }
 
+    var bottomInset: CGFloat {
+        return bottomLayoutOffset
+    }
+
     var shortFormHeight: PanModalHeight {
         return longFormHeight
     }
@@ -52,7 +56,7 @@ public extension PanModalPresentable where Self: UIViewController {
 
     var scrollIndicatorInsets: UIEdgeInsets {
         let top = shouldRoundTopCorners ? cornerRadius : 0
-        return UIEdgeInsets(top: CGFloat(top), left: 0, bottom: bottomLayoutOffset, right: 0)
+        return UIEdgeInsets(top: CGFloat(top), left: 0, bottom: bottomInset, right: 0)
     }
 
     var anchorModalToLongForm: Bool {
@@ -65,7 +69,7 @@ public extension PanModalPresentable where Self: UIViewController {
             else { return false }
 
         scrollView.layoutIfNeeded()
-        return scrollView.contentSize.height > (scrollView.frame.height - bottomLayoutOffset)
+        return scrollView.contentSize.height > (scrollView.frame.height - bottomInset)
     }
 
     var allowsDragToDismiss: Bool {

@@ -35,6 +35,13 @@ public protocol PanModalPresentable: AnyObject {
     var topOffset: CGFloat { get }
 
     /**
+     The *inset* (not *margin*) between the bottom of the screen and the bottom of the pan modal container view.
+
+     Default value is the safeAreaLayout.bottom on iOS 11 and above, and zero on older iOS versions.
+     */
+    var bottomInset: CGFloat { get }
+
+    /**
      The height of the pan modal container view
      when in the shortForm presentation state.
 
